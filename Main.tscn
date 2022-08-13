@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
-[ext_resource path="res://Card.gd" type="Script" id=2]
+[ext_resource path="res://Card.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Placment.tscn" type="PackedScene" id=3]
 
 [sub_resource type="GDScript" id=2]
@@ -83,91 +83,24 @@ align = 1
 valign = 1
 
 [node name="Placment2" parent="." instance=ExtResource( 3 )]
+visible = false
 position = Vector2( 682, 418 )
 monitoring = false
 monitorable = false
 value = "2A"
 
 [node name="Placment" parent="." instance=ExtResource( 3 )]
+visible = false
 position = Vector2( 448, 423 )
 monitoring = false
 monitorable = false
 
-[node name="Card" type="Sprite" parent="."]
-position = Vector2( 288, 97 )
-texture = ExtResource( 1 )
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
+[node name="Card" parent="." instance=ExtResource( 2 )]
 
-[node name="ColorRect" type="ColorRect" parent="Card"]
-margin_left = -32.0
-margin_top = -32.0
-margin_right = 32.0
-margin_bottom = 32.0
-mouse_filter = 2
-input_pass_on_modal_close_click = false
-
-[node name="Area2D" type="Area2D" parent="Card"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Card/Area2D"]
-shape = SubResource( 1 )
-
-[node name="Label" type="Label" parent="Card"]
-margin_left = -31.0
-margin_top = -26.0
-margin_right = -6.0
-margin_bottom = -5.0
-rect_scale = Vector2( 2.44493, 2.44493 )
-input_pass_on_modal_close_click = false
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 0
-custom_constants/line_spacing = 0
-text = "5a"
-align = 1
-valign = 1
-
-[node name="Card2" type="Sprite" parent="."]
+[node name="Card2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 416, 97 )
-texture = ExtResource( 1 )
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
 
-[node name="ColorRect" type="ColorRect" parent="Card2"]
-margin_left = -32.0
-margin_top = -32.0
-margin_right = 32.0
-margin_bottom = 32.0
-mouse_filter = 2
-input_pass_on_modal_close_click = false
-
-[node name="Area2D" type="Area2D" parent="Card2"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Card2/Area2D"]
-shape = SubResource( 1 )
-
-[node name="Label" type="Label" parent="Card2"]
-margin_left = -31.0
-margin_top = -26.0
-margin_right = -6.0
-margin_bottom = -5.0
-rect_scale = Vector2( 2.44493, 2.44493 )
-input_pass_on_modal_close_click = false
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 0
-custom_constants/line_spacing = 0
+[node name="Label" parent="Card2" index="2"]
 text = "-2"
-align = 1
-valign = 1
 
-[connection signal="area_entered" from="Card/Area2D" to="Card" method="_on_Area2D_area_entered"]
-[connection signal="area_exited" from="Card/Area2D" to="Card" method="_on_Area2D_area_exited"]
-[connection signal="input_event" from="Card/Area2D" to="Card" method="_on_Area2D_input_event"]
-[connection signal="area_entered" from="Card2/Area2D" to="Card2" method="_on_Area2D_area_entered"]
-[connection signal="area_exited" from="Card2/Area2D" to="Card2" method="_on_Area2D_area_exited"]
-[connection signal="input_event" from="Card2/Area2D" to="Card2" method="_on_Area2D_input_event"]
+[editable path="Card2"]

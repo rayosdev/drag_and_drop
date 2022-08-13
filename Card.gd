@@ -37,6 +37,7 @@ func what_side_of_equal_box():
 		if(text[0] == "-"): text = text.substr(1)
 		else: text = "-" + text
 		$Label.text = text
+		$AnimationPlayer.play("sign_change")
 
 func _on_Area2D_area_entered(area: Area2D):
 	if(is_draged):
