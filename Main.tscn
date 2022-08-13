@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://Card.gd" type="Script" id=2]
@@ -25,11 +25,62 @@ func _ready():
 
 "
 
+[sub_resource type="GDScript" id=3]
+script/source = "extends Sprite
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	Global.equals_box = self
+	pass # Replace with function body.
+"
+
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 31 )
 
 [node name="Main" type="Node"]
 script = SubResource( 2 )
+
+[node name="Equals" type="Sprite" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 352, 97 )
+texture = ExtResource( 1 )
+script = SubResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ColorRect" type="ColorRect" parent="Equals"]
+visible = false
+margin_left = -32.0
+margin_top = -32.0
+margin_right = 32.0
+margin_bottom = 32.0
+mouse_filter = 2
+input_pass_on_modal_close_click = false
+
+[node name="Area2D" type="Area2D" parent="Equals"]
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Equals/Area2D"]
+shape = SubResource( 1 )
+
+[node name="Label" type="Label" parent="Equals"]
+margin_left = -32.0
+margin_top = -25.0
+margin_right = -6.0
+margin_bottom = -4.0
+rect_scale = Vector2( 2.44493, 2.44493 )
+input_pass_on_modal_close_click = false
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/line_spacing = 1
+text = "="
+align = 1
+valign = 1
 
 [node name="Placment2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 682, 418 )
@@ -74,7 +125,7 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 0
 custom_constants/line_spacing = 0
-text = "5"
+text = "5a"
 align = 1
 valign = 1
 
@@ -110,7 +161,7 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 0
 custom_constants/line_spacing = 0
-text = "2"
+text = "-2"
 align = 1
 valign = 1
 
